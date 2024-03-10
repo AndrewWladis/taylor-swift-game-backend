@@ -96,7 +96,13 @@ def random_quote():
         j = math.ceil((num / 40))
 
         for i in range(num, len(lyrics_array), num):
-            item = lyrics_array[i]
+            item = {
+                "quote": {
+                    "quote": lyrics_array[i][0],
+                    "author": lyrics_array[i][1]
+                },
+                "options": []
+            }
             supporting_songs = []
             while len(supporting_songs) < 3:
                 if math.ceil((num / 40)) > len(all_songs):
@@ -110,13 +116,14 @@ def random_quote():
                 supporting_songs.append(all_songs[j])
                 j += math.ceil((num / 40))
 
-            supporting_songs.insert((j % 4), item[1])
-            item.append(supporting_songs)
+            supporting_songs.insert((j % 4), item["quote"]["author"])
+            item["options"] = supporting_songs
 
             quiz_list.append(item)
 
-    return jsonify({'quote': quiz_list})
+
+
+    return jsonify(quiz_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
