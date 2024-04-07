@@ -105,16 +105,16 @@ def random_quote():
             }
             supporting_songs = []
             while len(supporting_songs) < 3:
-                if math.ceil((num / 40)) > len(all_songs):
+                if math.ceil((num / 13)) > len(all_songs):
                     supporting_songs = ['22 (Taylor’s Version)',
                                         'All Too Well (10 Minute Version) (Taylor’s Version) [From The Vault]',
                                         'no body, no crime']
 
                 if j >= len(all_songs):
-                    j = math.ceil((num / 40))
+                    j = math.ceil((num / 13))
 
                 supporting_songs.append(all_songs[j])
-                j += math.ceil((num / 40))
+                j += math.ceil((num / 13))
 
             supporting_songs.insert((len(lyrics_array[i][0]) % 4), item["quote"]["author"])
             item["options"] = supporting_songs
