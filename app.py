@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/today-challenge', methods=['GET'])
 def random_quote():
     now = datetime.now()
-    num = ((now.weekday() + 3) * (now.day + now.month + 1)) + now.month
+    num = (((now.weekday() + 3) * (now.day + now.month + 1)) + now.month) * 3
 
     # Load the JSON data from the file
     with open('lyrics_array.json', 'r') as f:
@@ -123,7 +123,7 @@ def random_quote():
 
 
 
-    return jsonify(quiz_list)
+    return jsonify(quiz_list[::-1])
 
 if __name__ == '__main__':
     app.run(debug=True)
