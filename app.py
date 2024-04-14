@@ -32,7 +32,7 @@ def random_quote():
                  'Treacherous', 'We Are Never Ever Getting Back Together',
                  'Afterglow', 'Cornelia Street', 'Cruel Summer', 'Daylight', 'Death By A Thousand Cuts', 'False God',
                  'I Forgot That You Existed', 'I Think He Knows', 'It’s Nice To Have A Friend', 'London Boy', 'Lover',
-                 'ME!', 'Miss Americana & The Heartbreak Prince', 'Paper Rings', 'Soon You’ll Get Better', 'The Archer',
+                 'ME!', 'Miss Americana & The Heartbreak Prince', 'Paper Rings', "Soon You'll Get Better", 'The Archer',
                  'The Man', 'You Need To Calm Down', 'All Of The Girls You Loved Before',
                  'All You Had To Do Was Stay', 'Bad Blood',
                  'Blank Space', 'Clean',
@@ -111,10 +111,10 @@ def random_quote():
                                         'no body, no crime']
 
                 if j >= len(all_songs):
-                    j = math.ceil((num / 13))
+                    j = math.ceil((num / 22))
 
                 supporting_songs.append(all_songs[j])
-                j += math.ceil((num / 13))
+                j += math.ceil((num / 22))
 
             supporting_songs.insert((len(lyrics_array[i][0]) % 4), item["quote"]["author"])
             item["options"] = supporting_songs
