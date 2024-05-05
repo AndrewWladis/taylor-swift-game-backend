@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/today-challenge', methods=['GET'])
 def random_quote():
     now = datetime.now()
-    num = (((now.weekday() + 3) * (now.day + now.month + 1)) + now.month) * 3
+    num = ((((now.weekday() + 3) * (now.day + now.month + 1)) + (now.month * 3)) * 2)
 
     # Load the JSON data from the file
     with open('lyrics_array.json', 'r') as f:
@@ -80,7 +80,28 @@ def random_quote():
                  'seven', 'the 1', 'the last great american dynasty', 'this is me trying', 'champagne problems',
                  'closure', 'coney island', 'cowboy like me', 'dorothea', 'evermore', 'gold rush', 'happiness', 'ivy',
                  'long story short', 'marjorie', 'no body, no crime', '’tis the damn season', 'tolerate it', 'willow',
-                 'the lakes']
+                 'the lakes', 'Fortnight', 'The Tortured Poets Department', 'My Boy Only Breaks His Favorite Toys', "Down Bad", 'So Long, London',
+                 'But Daddy I Love Him', 'Fresh Out The Slammer', 'Florida!!!', 'Guilty as Sin?', "Who's Afraid of Little Old Me?", 'I Can Fix Him (No Really I Can)',
+  'loml',
+  'I Can Do It With a Broken Heart',
+  'The Smallest Man Who Ever Lived',
+  'The Alchemy',
+  'Clara Bow',
+  'The Black Dog',
+  'imgonnagetyouback',
+  'The Albatross',
+  'Chloe or Sam or Sophia or Marcus',
+  'How Did It End?',
+  'So High School',
+  'I Hate It Here',
+  'thanK you aIMee',
+  "I Look In People's Windows",
+  'The Prophecy',
+  'Cassandra',
+  'Peter',
+  'The Bolter',
+  'Robin',
+  'The Manuscript']
     lyrics_array = []
     quiz_list = []
 
@@ -92,10 +113,10 @@ def random_quote():
             for lyric in lyrics:
                 lyrics_array.append([lyric, song_data['song']])
 
-    while len(quiz_list) < 11:
-        j = math.ceil((num / 40))
+    j = math.ceil((num / 640))
 
-        for i in range(num, len(lyrics_array), num):
+    for i in range(num, len(lyrics_array), num):
+        if len(quiz_list) < 10:
             item = {
                 "quote": {
                     "quote": lyrics_array[i][0],
@@ -120,6 +141,8 @@ def random_quote():
             item["options"] = supporting_songs
 
             quiz_list.append(item)
+        else:
+            break
 
 
 
