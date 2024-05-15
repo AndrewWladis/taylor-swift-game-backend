@@ -1,12 +1,10 @@
-from flask import Flask, g, jsonify
+from flask import Flask, jsonify
 from datetime import datetime
 import json
 import math
 import random
 
 app = Flask(__name__)
-
-app.config['GLOBAL_VARIABLE'] = False
 
 @app.route('/today-challenge', methods=['GET'])
 def random_quote():
